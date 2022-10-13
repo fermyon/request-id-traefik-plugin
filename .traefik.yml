@@ -1,0 +1,9 @@
+displayName: Request Id
+type: middleware
+
+import: github.com/michelleN/request-id
+
+summary: "Add Request ID Header"
+
+testData:
+  Header: "test-header-name"
