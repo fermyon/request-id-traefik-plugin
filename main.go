@@ -1,5 +1,5 @@
 // Package example a example plugin.
-package main
+package request_id
 
 import (
 	"context"
