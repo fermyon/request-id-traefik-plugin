@@ -1,4 +1,4 @@
-module request-id
+module github.com/michelleN/request-id
 
 go 1.19
 
