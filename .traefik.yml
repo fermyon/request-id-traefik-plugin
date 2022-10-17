@@ -1,7 +1,7 @@
-displayName: Request Id
+displayName: Request Id Traefik Plugin
 type: middleware
 
-import: github.com/michelleN/request-id
+import: github.com/fermyon/request-id-traefik-plugin
 
 summary: "Add Request ID Header"
 

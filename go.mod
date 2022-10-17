@@ -1,4 +1,4 @@
-module github.com/michelleN/request-id
+module github.com/fermyon/request-id-traefik-plugin
 
 go 1.19
 
