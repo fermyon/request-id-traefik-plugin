@@ -1,4 +1,4 @@
-package request_id
+package request_id_traefik_plugin
 
 import (
 	"context"
