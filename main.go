@@ -1,9 +1,11 @@
-// Package example a example plugin.
 package request_id
 
 import (
 	"context"
+	"errors"
 	"net/http"
+
+	"github.com/google/uuid"
 )
 
 var defaultHeader string = "X-Request-Id"
@@ -29,7 +31,10 @@ type RequestId struct {
 
 // New created a new plugin.
 func New(ctx context.Context, next http.Handler, config *Config, name string) (http.Handler, error) {
-	// TODO make sure header is valid
+	if len(config.Header) == 0 {
+		return nil, errors.New("invalid header name")
+	}
+
 	return &RequestId{
 		next:   next,
 		name:   name,
@@ -38,6 +43,7 @@ func New(ctx context.Context, next http.Handler, config *Config, name string) (h
 }
 
 func (r *RequestId) ServeHTTP(rw http.ResponseWriter, req *http.Request) {
-	req.Header.Set(r.header, "something")
+	request_id := uuid.New().String()
+	req.Header.Set(r.header, string(request_id))
 	r.next.ServeHTTP(rw, req)
 }

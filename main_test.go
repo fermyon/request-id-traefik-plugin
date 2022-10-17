@@ -28,13 +28,13 @@ func TestRequestId(t *testing.T) {
 
 	handler.ServeHTTP(recorder, req)
 
-	assertHeader(t, req, "some-header", "something")
+	assertHeaderNotEmpty(t, req, "some-header")
 }
 
-func assertHeader(t *testing.T, req *http.Request, key, expected string) {
+func assertHeaderNotEmpty(t *testing.T, req *http.Request, key string) {
 	t.Helper()
 
-	if req.Header.Get(key) != expected {
-		t.Errorf("invalid header value: %s", req.Header.Get(key))
+	if req.Header.Get(key) == "" {
+		t.Errorf("empty header value")
 	}
 }
